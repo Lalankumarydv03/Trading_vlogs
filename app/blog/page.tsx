@@ -1,7 +1,6 @@
-import Image from "next/image";
-import Link from "next/link";
 import type { Metadata } from "next";
 import { posts } from "@/lib/posts";
+import { BlogBrowser } from "@/components/blog-browser";
 
 export const metadata: Metadata = {
   title: "Articles",
@@ -17,19 +16,7 @@ export default function BlogPage() {
         <p>Practical explanations of market concepts, risk, and trading terminology. Start with the basics and keep learning.</p>
       </section>
       <section className="container blog-list">
-        <div className="post-grid">
-          {posts.map((post) => (
-            <article className="post-card" key={post.slug}>
-              <Link className="post-image" href={"/blog/" + post.slug}>
-                <Image src={post.coverImage} alt="" fill sizes="(max-width: 600px) 100vw, (max-width: 850px) 50vw, 33vw" />
-              </Link>
-              <span className="post-category">{post.category}</span>
-              <h3><Link href={"/blog/" + post.slug}>{post.title}</Link></h3>
-              <p>{post.excerpt}</p>
-              <div className="post-meta"><span>{post.date}</span><span>{post.readTime}</span></div>
-            </article>
-          ))}
-        </div>
+        <BlogBrowser posts={posts} />
         <p style={{ marginTop: 30, color: "var(--muted)", fontSize: 12 }}>You’re viewing the starter article collection. More topics can be added through the content system in a later phase.</p>
       </section>
     </main>
