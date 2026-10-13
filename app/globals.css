@@ -147,3 +147,14 @@ img { max-width: 100%; }
   .article-title { letter-spacing: -1.8px; }
   .article-body { font-size: 17px; }
 }
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.blog-controls { display: grid; grid-template-columns: minmax(0, 1fr) 210px; gap: 12px; margin-bottom: 12px; }
+.search-box { display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 0 16px; border: 1px solid var(--line); border-radius: 13px; background: white; color: var(--muted); }
+.search-box input { width: 100%; min-width: 0; border: 0; outline: none; background: transparent; color: var(--ink); font: inherit; font-size: 13px; }
+.search-box input:focus-visible { outline: 2px solid #8bb69e; outline-offset: 4px; border-radius: 3px; }
+.search-box button { display: grid; place-items: center; border: 0; background: transparent; color: var(--muted); cursor: pointer; }
+.category-select-label select { width: 100%; height: 52px; padding: 0 14px; border: 1px solid var(--line); border-radius: 13px; background: white; color: var(--ink); font: inherit; font-size: 13px; }
+.results-count { margin: 0 0 26px; color: var(--muted); font-size: 11px; }
+.empty-state p { margin: 9px 0 20px; color: var(--muted); font-size: 13px; }
+@media (max-width: 600px) { .blog-controls { grid-template-columns: 1fr; } }
