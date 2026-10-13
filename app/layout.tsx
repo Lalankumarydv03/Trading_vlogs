@@ -23,14 +23,16 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body>
-        <AdNetworkServiceWorker />
+      <head>
         <Script
           src="https://quge5.com/88/tag.min.js"
           data-zone="295231"
-          strategy="afterInteractive"
+          strategy="beforeInteractive"
           data-cfasync="false"
         />
+      </head>
+      <body>
+        <AdNetworkServiceWorker />
         <SiteHeader />
         {children}
         <SiteFooter />
