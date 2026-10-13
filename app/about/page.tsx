@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "About",
@@ -16,7 +17,9 @@ export default function AboutPage() {
       <h2>Our editorial approach</h2>
       <p>We aim to be practical, careful with claims, and transparent about uncertainty. No strategy can guarantee profits, and an explanation should never replace independent research or advice suited to an individual’s circumstances.</p>
       <h2>Keep learning</h2>
-      <p>Use the <a href="/blog" style={{ color: "var(--green)", textDecoration: "underline" }}>article library</a> as a starting point. Check dates on time-sensitive material and consult credible sources before making financial decisions.</p>
+      <p>
+        Use the <Link href="/blog" style={{ color: "var(--green)", textDecoration: "underline" }}>article library</Link> as a starting point. Check dates on time-sensitive material and consult credible sources before making financial decisions.
+      </p>
     </main>
   );
 }
