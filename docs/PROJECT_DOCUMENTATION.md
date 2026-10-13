@@ -1,239 +1,211 @@
-# Trading Vlogs — Blog Website Project Documentation
+# Trading Vlogs — Project Documentation
 
-**Status:** Planning and requirements  
-**Repository:** https://github.com/Lalankumarydv03/Trading_vlogs  
-**Document version:** 1.0
+**Status:** Requirements confirmed; implementation not yet started  
+**Version:** 1.1  
+**Repository:** https://github.com/Lalankumarydv03/Trading_vlogs
 
 ## 1. Project Overview
 
-Trading Vlogs is planned as a professional, responsive blogging website where readers can discover and read useful articles. The initial content direction is trading and market education, based on the repository name. The website should be easy to navigate, fast, accessible, search-engine friendly, and straightforward for its owner to maintain.
+Trading Vlogs will be a professional English-language blog focused on trading and stock-market education. It will publish educational explainers about market fundamentals, trading concepts, risk management, technical analysis, and financial literacy. The site is an educational publication, not a source of guaranteed returns or personalized investment advice.
 
-This document defines the proposed product scope and technical plan. No website application code is included in this planning stage.
+The first release is for public readers and one administrator. Visitors do not need accounts to read articles. The administrator will use a protected dashboard to manage posts.
 
-## 2. Goals
+## 2. Confirmed Product Decisions
 
-- Publish well-organized articles with titles, cover images, categories, and tags.
-- Provide a polished reading experience on desktop, tablet, and mobile.
-- Let the site owner create, edit, preview, publish, and unpublish posts through a protected admin area.
-- Make articles discoverable through search engines, categories, tags, and site search.
-- Keep the first release small enough to build and maintain reliably.
+- **Topic:** Trading and stock-market education.
+- **Content language:** English.
+- **Publishing model:** One administrator.
+- **Framework:** Next.js with TypeScript.
+- **Styling:** Tailwind CSS.
+- **Database and authentication:** Supabase (PostgreSQL and Supabase Auth).
+- **Image storage:** Supabase Storage.
+- **Hosting:** Vercel.
+- **Version control:** GitHub.
+- **Reader accounts:** Not in the initial release.
+- **Comments:** Deferred from the initial release.
+- **Newsletter:** Deferred until the core blog is stable.
 
-## 3. Target Audience
+## 3. Goals
 
-- Readers learning about trading and financial markets.
-- People looking for educational explainers, market concepts, and trading-related articles.
-- Returning readers who want to browse posts by topic.
+- Publish articles with titles, cover images, excerpts, categories, and tags.
+- Offer a polished, responsive reading experience on mobile, tablet, and desktop.
+- Allow the administrator to draft, preview, publish, edit, and unpublish posts.
+- Help readers discover articles using search, categories, tags, related posts, and SEO.
+- Keep the initial version secure, maintainable, and affordable to operate.
 
-**Editorial note:** Content should be educational, clearly dated where relevant, and transparent about risks. Avoid presenting articles as guaranteed financial returns or personalized financial advice.
+## 4. Audience and Editorial Guidelines
 
-## 4. Website Structure and Pages
+The audience includes beginners learning about markets and readers looking for explanations of trading terminology, market mechanics, and risk management.
 
-| Page | Purpose |
+Editorial guidelines:
+- Clearly distinguish educational information from personal financial advice.
+- Explain risks and limitations; never promise profits or guaranteed outcomes.
+- Add publication and update dates when relevant.
+- Check facts and cite credible sources for claims, data, and market events.
+- Avoid presenting stale market prices or time-sensitive information as current.
+- Include a visible educational disclaimer on relevant pages.
+
+## 5. Site Map
+
+| Route / page | Purpose |
 |---|---|
-| Home | Introduce the publication, highlight featured and recent posts, and show key categories. |
-| Blog | Browse all published articles with pagination. |
-| Article detail | Read an article, see its author/date/category, and discover related posts. |
-| Category page | Browse articles grouped by topic. |
-| Search results | Find published articles by title and relevant text. |
-| About | Explain the site's purpose and editorial approach. |
-| Contact | Provide a contact method or contact form, with spam protection if a form is added. |
-| Privacy policy | Explain what information is collected and how it is used. |
-| Terms and disclaimer | Set expectations for site use and educational financial content. |
-| Admin sign-in | Secure entry to content management. |
-| Admin dashboard | View and manage posts and publication status. |
-| Post editor | Create, edit, preview, publish, and unpublish articles. |
+| / | Homepage with featured content, recent posts, and topic categories. |
+| /blog | All published articles with pagination and search. |
+| /blog/[slug] | Full article with metadata, category, tags, and related posts. |
+| /categories/[slug] | Articles in a category. |
+| /about | Purpose, author/editorial approach, and publication information. |
+| /contact | Contact details or a future protected contact form. |
+| /privacy | Privacy notice appropriate to the services actually enabled. |
+| /disclaimer | Educational and financial-risk disclaimer. |
+| /admin/login | Administrator sign-in. |
+| /admin | Protected content dashboard. |
+| /admin/posts/new | Create a post. |
+| /admin/posts/[id]/edit | Edit an existing post. |
 
-## 5. Core Features
+## 6. Core Features
 
-### Public reader experience
-- Responsive navigation and mobile menu.
-- Featured article and latest-post sections on the home page.
-- Article cards with cover image, title, short excerpt, category, and publication date.
-- Article reading page with readable typography and shareable URL.
-- Category and tag browsing.
-- Search and pagination.
-- Related-article suggestions.
-- Loading, empty, and not-found states.
-- Accessible keyboard navigation, form labels, and image alternative text.
+### Public website
+- Responsive header, navigation, and footer.
+- Editorial-style homepage with a featured article and recent posts.
+- Article cards with cover image, title, excerpt, category, and date.
+- Readable article typography and stable, shareable slugs.
+- Search, category browsing, tags, pagination, and related posts.
+- Loading, empty, error, and not-found states.
+- Mobile-friendly layouts, keyboard accessibility, visible focus states, and image alt text.
 
-### Content management
-- Protected administrator sign-in.
-- Create, edit, preview, publish, and unpublish posts.
-- Draft and published statuses.
-- Cover image upload with file-type and size validation.
-- Slug generation with collision checks.
-- Assign categories and tags.
-- SEO title, meta description, and social preview image fields.
-- Confirmation before destructive actions.
+### Administrator content management
+- Supabase Auth sign-in for the single authorized administrator.
+- Dashboard listing posts and publication statuses.
+- Create, edit, preview, publish, and unpublish articles.
+- Draft and published states.
+- Cover image upload with type and size validation.
+- Slug generation and uniqueness validation.
+- Category and tag assignment.
+- SEO title, meta description, and social preview fields.
+- Confirmation for destructive operations.
 
-### Quality and discoverability
-- Unique page titles and meta descriptions.
+### SEO and performance
+- Unique page titles and descriptions.
 - Canonical URLs, sitemap, robots rules, and Open Graph metadata.
-- Structured data for articles where appropriate.
-- Optimized images and sensible caching.
-- Clear 404 page and helpful error messages.
-- Analytics only after choosing a provider and reviewing privacy requirements.
+- Article structured data where appropriate.
+- Optimized images and caching.
+- Useful 404 and error pages.
+- Analytics only after a provider is selected and privacy implications are reviewed.
 
-## 6. Recommended Technology Stack
+## 7. Design Direction
 
-The stack below is a proposal and can be changed before implementation.
+Create a refined financial-editorial aesthetic rather than a trading terminal or generic admin template:
+- Deep navy/charcoal text, off-white backgrounds, and a restrained emerald accent.
+- Clear typography, generous whitespace, and comfortable article line lengths.
+- Strong headline hierarchy and high-quality, consistently cropped article covers.
+- Subtle borders and restrained shadows; avoid excessive gradients and animations.
+- Responsive design with accessible color contrast.
+- The brand name remains **Trading Vlogs** unless changed later.
 
-| Layer | Recommendation | Reason |
+The logo and final design details can be refined during implementation.
+
+## 8. Technology Architecture
+
+| Layer | Choice | Responsibilities |
 |---|---|---|
-| Framework | Next.js with TypeScript | React-based pages, routing, and SEO-friendly rendering. |
-| Styling | Tailwind CSS | Consistent, responsive UI and fast iteration. |
-| Database | Supabase PostgreSQL | Managed relational database for posts, categories, and tags. |
-| Authentication | Supabase Auth | Protected admin access without building password storage from scratch. |
-| Image storage | Supabase Storage | Centralized article cover-image storage. |
-| Content editor | A maintained Markdown or rich-text editor | Comfortable writing and predictable article rendering. |
-| Hosting | Vercel | Convenient deployment for a Next.js application. |
-| Version control | Git and GitHub | Reviewable changes and project history. |
+| Frontend and server rendering | Next.js App Router + TypeScript | Pages, layouts, server rendering, route handlers, metadata. |
+| UI styling | Tailwind CSS | Responsive styles and reusable design patterns. |
+| Database | Supabase PostgreSQL | Posts, categories, tags, and relationships. |
+| Authentication | Supabase Auth | Administrator authentication. |
+| Storage | Supabase Storage | Article cover images. |
+| Hosting | Vercel | Deployment and environment configuration. |
+| Source control | GitHub | Version history and collaboration. |
 
-Use compatible, stable package versions at implementation time. Keep credentials in environment variables and never commit secret keys.
+Use maintained, compatible package versions at setup time. Do not commit .env files or credentials.
 
-## 7. Proposed Data Model
-
-### profiles
-- id — user ID linked to the authentication provider.
-- display_name — public author name.
-- avatar_url — optional profile image.
-- created_at — creation timestamp.
+## 9. Proposed Data Model
 
 ### posts
-- id — unique post ID.
-- title — article title.
-- slug — unique URL-friendly identifier.
+- id — UUID primary key.
+- title — required article title.
+- slug — required unique URL slug.
 - excerpt — short summary.
-- content — article body in the selected editor format.
-- cover_image_url — optional cover image.
-- author_id — reference to the author profile.
+- content — article content in the selected editor format.
+- cover_image_url — optional public cover-image URL.
+- category_id — category reference.
 - status — draft or published.
 - published_at — publication timestamp.
-- seo_title — optional search title.
-- seo_description — optional search description.
-- created_at and updated_at — timestamps.
+- seo_title, seo_description — optional SEO metadata.
+- created_at, updated_at — timestamps.
 
 ### categories
-- id — unique category ID.
-- name — display name.
-- slug — unique URL-friendly identifier.
+- id — UUID primary key.
+- name — category label.
+- slug — unique URL slug.
 
-### tags
-- id — unique tag ID.
-- name — display name.
-- slug — unique URL-friendly identifier.
+### tags and post_tags
+- tags stores tag names and unique slugs.
+- post_tags joins posts to tags and prevents duplicate post/tag pairs.
 
-### Relationships
-- A post belongs to a category, if categories are implemented as a single category per post.
-- Posts and tags use a join table such as post_tags to support multiple tags per post.
-- A post references its author profile.
-- Add database indexes for published status, publication date, slug, and frequently searched fields as appropriate.
+The initial release has one administrator; author profiles and multi-author workflows are not required. The schema and migrations must be committed to the repository before production setup.
 
-The exact schema should be finalized before database migrations are written.
+## 10. Security and Privacy
 
-## 8. Security and Privacy Requirements
-
-- Only authorized administrators can access content-management actions.
-- Enforce authorization in server-side logic and database policies; hiding UI controls is not sufficient.
-- Configure Supabase Row Level Security policies before connecting production data.
-- Public readers should only be able to read published posts and other intentionally public records.
-- Validate and sanitize editor content before rendering it.
-- Validate image type, size, and upload permissions.
-- Keep service-role keys and other secrets on the server only.
-- Add rate limiting and spam protection to public forms if those features are enabled.
-- Collect the minimum personal information needed and publish an accurate privacy policy.
-- Back up production content and test recovery procedures.
-
-## 9. Design Direction
-
-The visual style should feel modern, editorial, and trustworthy rather than like a generic dashboard.
-
-- Strong typography and clear content hierarchy.
-- Generous whitespace and readable article line length.
-- Consistent spacing, borders, and subtle shadows.
-- High-quality article thumbnails with consistent aspect ratios.
-- A restrained color palette with one recognizable accent color.
-- Accessible contrast and visible keyboard focus.
-- Mobile-first layouts that work without horizontal scrolling.
-- Avoid distracting animations and excessive pop-ups.
-
-The final color palette, logo, typography, and homepage layout will be decided during UI design.
-
-## 10. Non-Functional Requirements
-
-- Good performance on typical mobile connections.
-- Responsive layouts across common screen sizes.
-- Semantic HTML and basic WCAG accessibility practices.
-- Reliable error handling and useful empty states.
-- Maintainable components and typed data models.
-- SEO metadata for every public article.
-- No secrets or private draft content exposed to public pages.
-- Clear development and deployment instructions.
+- Public visitors can read published posts only.
+- Drafts and admin operations must be protected on the server and by database Row Level Security (RLS) policies.
+- Restrict administrator access to the intended account; do not allow public self-registration for the admin area.
+- Never expose the Supabase service-role key in client-side code.
+- Keep secrets in local environment variables and Vercel environment settings.
+- Validate user input and sanitize/render article content safely.
+- Validate uploaded image formats and sizes.
+- Protect any future contact form from spam and abuse.
+- Publish a privacy notice that matches the services and data collection actually used.
+- Keep backups and test content recovery.
 
 ## 11. Implementation Roadmap
 
-### Phase 1 — Documentation and decisions
-- Review and approve this scope.
-- Confirm the content niche, branding, and technology stack.
-- Finalize the page structure and database schema.
+### Phase 1 — Requirements and documentation
+- Confirm topic, language, single-admin model, and technology stack. **Complete.**
+- Finalize initial feature scope and acceptance criteria. **Complete.**
 
-### Phase 2 — Foundation
-- Set up the Next.js and TypeScript project.
-- Add styling, shared layout, navigation, and reusable components.
-- Configure environment variables and linting.
+### Phase 2 — Application foundation
+- Create the Next.js App Router + TypeScript project with Tailwind CSS.
+- Add global design tokens, shared layout, navigation, and responsive components.
+- Add environment-variable examples and setup instructions.
 
 ### Phase 3 — Public blog
-- Build the home page, blog listing, article detail, category, and search pages.
-- Add responsive states, metadata, sitemap, and not-found handling.
-- Start with sample content clearly marked as demo content.
+- Implement homepage, blog listing, article details, categories, search, About, and Disclaimer.
+- Add demo articles clearly marked as sample content until real content is supplied.
+- Add metadata, sitemap, robots rules, and not-found handling.
 
-### Phase 4 — Content management
-- Configure Supabase database, storage, authentication, and access policies.
-- Build the protected admin dashboard and post editor.
-- Test drafts, publishing, editing, and image uploads.
+### Phase 4 — Data and admin
+- Add Supabase schema/migrations, RLS policies, authentication, and storage configuration.
+- Implement protected admin routes and post editing.
+- Test draft/publish workflows and uploads.
 
-### Phase 5 — Testing and launch
-- Test desktop and mobile layouts, navigation, forms, and access control.
-- Check performance, accessibility, SEO metadata, and error states.
-- Configure production environment variables and deployment.
-- Verify the live site and document ongoing maintenance.
+### Phase 5 — Quality and deployment
+- Test mobile/desktop layouts, accessibility, SEO, and authorization boundaries.
+- Configure Vercel environment variables and deployment.
+- Verify the production site and document maintenance.
 
-## 12. Acceptance Criteria for the First Release
+## 12. First-Release Acceptance Criteria
 
-- Visitors can browse and open published posts without signing in.
-- Draft posts are not visible to public readers.
-- The administrator can sign in and manage posts.
-- Article URLs are stable and unique.
-- Search, categories, and pagination work as specified.
-- Layouts work on mobile and desktop.
-- Images have alternative text and are optimized.
-- Protected operations are enforced server-side and by database policies.
-- Setup and deployment steps are documented.
-- No secret credentials are committed to the repository.
+- Visitors can browse published posts without signing in.
+- Draft posts never appear on public pages or public search results.
+- The single administrator can securely sign in and manage articles.
+- Slugs are unique and stable.
+- Search, category browsing, and pagination behave consistently.
+- Pages work on common mobile and desktop sizes.
+- Images are optimized and have meaningful alt text.
+- Server-side checks and database policies protect private operations.
+- Local setup and deployment are documented.
+- No secrets are committed to GitHub.
 
-## 13. Out of Scope for the Initial Release
-
-To keep the first version manageable, defer these until the core blog is stable:
+## 13. Deferred Features
 
 - Reader accounts and personalized feeds.
 - Comments and community discussions.
-- Paid subscriptions or memberships.
-- Automated trading signals or broker integrations.
-- Push notifications.
+- Email newsletter and notifications.
+- Paid memberships or subscriptions.
+- Broker integrations, automated signals, or trading execution.
 - Multi-author editorial workflows.
 - Advanced recommendation systems.
 
-## 14. Open Decisions Before Development
+## 14. Current Status and Next Step
 
-1. Is the website specifically for trading and financial-market content, or will it cover general topics?
-2. What site name, logo, and color palette should be used?
-3. Should posts be written in English, Hindi, or both?
-4. Is a single administrator enough for the first release?
-5. Should comments or an email newsletter be included in the first version?
-6. Is the proposed Next.js + Supabase stack acceptable?
-
-## 15. Project Status
-
-**Current milestone:** Documentation first.  
-**Next milestone:** Confirm the open decisions, then implement the website in small, reviewable steps.  
-**Important:** This document is a proposed plan, not a claim that the website or its features have already been implemented.
+Requirements are confirmed and this document has been updated before application implementation. The next step is to create the application foundation and public-facing blog UI. Supabase-powered publishing and production deployment require the owner's Supabase and Vercel project configuration; the site must not claim those integrations are live until configured and tested.
