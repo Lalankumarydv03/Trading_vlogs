@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, BookOpen, ChartNoAxesCombined, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowRight, BookOpen, TrendingUp, ShieldCheck, Sparkles } from "lucide-react";
 import { categories, posts } from "@/lib/posts";
 
 export default function HomePage() {
@@ -37,7 +37,7 @@ export default function HomePage() {
           <strong>BUILT FOR LEARNING</strong>
           <span><BookOpen size={15} style={{ display: "inline", verticalAlign: "middle", marginRight: 7 }} /> Clear explanations</span>
           <span><ShieldCheck size={15} style={{ display: "inline", verticalAlign: "middle", marginRight: 7 }} /> Risk-aware perspective</span>
-          <span><ChartNoAxesCombined size={15} style={{ display: "inline", verticalAlign: "middle", marginRight: 7 }} /> Market concepts, simplified</span>
+          <span><TrendingUp size={15} style={{ display: "inline", verticalAlign: "middle", marginRight: 7 }} /> Market concepts, simplified</span>
         </div>
       </div>
 
@@ -80,7 +80,7 @@ export default function HomePage() {
           <div className="category-grid">
             {categories.map((category, index) => (
               <Link href="/blog" className="category-card" key={category.name}>
-                <span className="category-icon">{[<BookOpen size={18} key="book" />, <ShieldCheck size={18} key="shield" />, <ChartNoAxesCombined size={18} key="chart" />, <Sparkles size={18} key="spark" />][index]}</span>
+                <span className="category-icon">{[<BookOpen size={18} key="book" />, <ShieldCheck size={18} key="shield" />, <TrendingUp size={18} key="chart" />, <Sparkles size={18} key="spark" />][index]}</span>
                 <h3>{category.name}</h3><p>{category.description}</p>
               </Link>
             ))}
