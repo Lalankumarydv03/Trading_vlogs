@@ -1,7 +1,7 @@
 # Trading Vlogs — Project Documentation
 
-**Status:** Requirements confirmed; implementation not yet started  
-**Version:** 1.1  
+**Status:** Requirements confirmed; public UI foundation in progress  
+**Version:** 1.2  
 **Repository:** https://github.com/Lalankumarydv03/Trading_vlogs
 
 ## 1. Project Overview
@@ -164,14 +164,14 @@ The initial release has one administrator; author profiles and multi-author work
 - Finalize initial feature scope and acceptance criteria. **Complete.**
 
 ### Phase 2 — Application foundation
-- Create the Next.js App Router + TypeScript project with Tailwind CSS.
-- Add global design tokens, shared layout, navigation, and responsive components.
-- Add environment-variable examples and setup instructions.
+- Create the Next.js App Router + TypeScript project with Tailwind CSS. **Initial files added.**
+- Add global design tokens, shared layout, navigation, and responsive components. **Initial UI added.**
+- Add environment-variable examples and setup instructions. **Added.**
 
 ### Phase 3 — Public blog
-- Implement homepage, blog listing, article details, categories, search, About, and Disclaimer.
-- Add demo articles clearly marked as sample content until real content is supplied.
-- Add metadata, sitemap, robots rules, and not-found handling.
+- Implement homepage, blog listing, article details, search/topic filtering, About, and Disclaimer. **Initial pages and local search/filter added.**
+- Add demo articles clearly marked as sample content until real content is supplied. **Sample articles added; replace before launch.**
+- Add metadata and not-found handling. **Initial metadata and 404 added.** Sitemap, robots rules, category routes, and pagination remain to be completed.
 
 ### Phase 4 — Data and admin
 - Add Supabase schema/migrations, RLS policies, authentication, and storage configuration.
@@ -208,4 +208,4 @@ The initial release has one administrator; author profiles and multi-author work
 
 ## 14. Current Status and Next Step
 
-Requirements are confirmed and this document has been updated before application implementation. The next step is to create the application foundation and public-facing blog UI. Supabase-powered publishing and production deployment require the owner's Supabase and Vercel project configuration; the site must not claim those integrations are live until configured and tested.
+Requirements are confirmed and documented before coding. The initial Next.js/TypeScript/Tailwind foundation and public-facing UI have been committed, including sample articles and client-side search/topic filtering. This code has not been installed, built, or runtime-tested in this session. Supabase-powered publishing, protected admin pages, database policies, sitemap/robots, category routes, and production deployment remain pending. Supabase and Vercel integrations must not be described as live until configured and tested.
